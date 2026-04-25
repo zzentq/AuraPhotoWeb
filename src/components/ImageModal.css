@@ -1,0 +1,58 @@
+.image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--safe-top) + 16px) 16px calc(var(--safe-bottom) + 16px);
+  animation: fade-in 0.2s ease;
+  overflow-y: auto;
+}
+
+.image-modal__content {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.image-modal__image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.image-modal__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-modal__prompt {
+  background: rgba(30, 18, 6, 0.8);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.image-modal__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.image-modal__actions .btn {
+  flex: 1;
+}

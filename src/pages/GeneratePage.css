@@ -1,0 +1,135 @@
+.generate-page {
+  padding-top: 24px;
+}
+
+/* Зона загрузки изображения */
+.upload-zone {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 2px dashed var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  background: rgba(0, 0, 0, 0.15);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 20px;
+  transition: border-color 0.15s ease;
+}
+
+.upload-zone:not(.upload-zone--disabled):hover {
+  border-color: var(--accent);
+}
+
+.upload-zone--disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+.upload-zone__text {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* Ряд "Соотношение" + "Количество" */
+.generate-page__controls {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 8px;
+}
+
+.pill-field__dropdown {
+  position: relative;
+}
+
+.pill-field__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  /* Стартовый и финальный transform — оба содержат translateX(-50%),
+     чтобы меню никогда не "уезжало" вправо во время анимации. */
+  transform: translateX(-50%);
+  transform-origin: top center;
+  min-width: 110px;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background: var(--accent);
+  color: var(--accent-text-on);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  animation: pill-menu-in 0.18s ease-out both;
+}
+
+@keyframes pill-menu-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.pill-field__menu-item {
+  width: 100%;
+  padding: 10px 16px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+  transition: background 0.12s ease;
+  color: var(--accent-text-on);
+}
+
+.pill-field__menu-item:hover,
+.pill-field__menu-item--active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Промпт */
+.generate-page__prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.generate-page__prompt-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.generate-page__prompt .textarea {
+  width: 100%;
+}
+
+.generate-page__prompt-counter {
+  align-self: flex-end;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.generate-page__error {
+  text-align: center;
+  color: var(--danger);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.generate-page__warning {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}

@@ -1,0 +1,109 @@
+.progress-page {
+  padding-top: 24px;
+}
+
+/* Лёгкое покачивание звезды-эмодзи. Без drop-shadow свечения,
+   т.к. на PNG с прозрачностью оно ложится по контуру некрасиво. */
+.progress-page__spinner {
+  display: inline-flex;
+  animation: soft-bob 2.4s ease-in-out infinite;
+}
+
+@keyframes soft-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-6px) rotate(2deg); }
+}
+
+.progress-page__counter {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.progress-page__error-icon {
+  font-size: 56px;
+  line-height: 1;
+}
+
+.progress-page__error-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+  max-width: 280px;
+  margin: 0;
+}
+
+.progress-page__refund-note {
+  color: var(--success);
+  font-size: 13px;
+  margin: 0;
+}
+
+.progress-page__results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.progress-page__image {
+  width: 100%;
+  max-width: 360px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.progress-page__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.progress-page__prompt-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.progress-page__prompt-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.progress-page__prompt-box {
+  width: 100%;
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.progress-page__partial-warning {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.progress-page__actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: auto;
+}
+
+.progress-page__actions .btn--primary {
+  flex: 1;
+}
+
+.progress-page__downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

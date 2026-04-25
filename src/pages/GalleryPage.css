@@ -1,0 +1,62 @@
+.gallery-page {
+  padding-top: 24px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.gallery-card {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+  padding: 0;
+  transition: transform 0.15s ease;
+  box-shadow: var(--shadow-card);
+}
+
+.gallery-card:active {
+  transform: scale(0.98);
+}
+
+.gallery-card__image,
+.gallery-card__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gallery-card__image img {
+  object-fit: cover;
+}
+
+.gallery-page__empty-emoji {
+  display: inline-flex;
+  /* без pulse-glow — на PNG свечение ложится криво по контуру */
+}
+
+.gallery-page__loader {
+  display: inline-flex;
+  animation: soft-bob 2s ease-in-out infinite;
+}
+
+/* "Каркас" пока быстро грузится — просто пустое место под бейджем */
+.gallery-page__placeholder {
+  flex: 1;
+}
+
+@media (min-width: 500px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    gap: 16px;
+  }
+}

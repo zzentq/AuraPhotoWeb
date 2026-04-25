@@ -1,0 +1,104 @@
+/**
+ * Геометрия:
+ * - .tab-bar__inner — горизонтальный flex с 5 слотами равной ширины (flex: 1 1 0).
+ * - Центральный слот ВНУТРИ полоски (не вылезает наружу), но визуально
+ *   выглядит как круглая кнопка с лёгким приподнятием — за счёт scale + glow.
+ * - Никакого margin-top: -24px — благодаря этому кнопка остаётся ровно по
+ *   центру полоски и тень падает строго под ней.
+ */
+
+.tab-bar {
+  width: 100%;
+  pointer-events: none;
+}
+
+.tab-bar__inner {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 6px;
+  background: rgba(30, 18, 6, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.6);
+}
+
+.tab-bar__item {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 2px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: color 0.15s ease;
+}
+
+.tab-bar__item--active {
+  color: var(--accent);
+}
+
+.tab-bar__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+}
+
+.tab-bar__label {
+  line-height: 1.1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --- Центральный слот --- */
+.tab-bar__item--primary {
+  /* остаёмся в равной ширине, но содержимое — круглая кнопка */
+  padding: 0;
+}
+
+.tab-bar__primary-circle {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-text-on);
+  /* Тень РОВНО под кнопкой — без вертикального смещения, только размытие */
+  box-shadow: 0 0 24px var(--accent-glow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tab-bar__item--primary:active .tab-bar__primary-circle {
+  transform: scale(0.95);
+}
+
+.tab-bar__item--primary.tab-bar__item--active .tab-bar__primary-circle {
+  box-shadow: 0 0 32px var(--accent-glow);
+}
+
+.tab-bar__primary-icon {
+  /* иконка-маска, цвет берёт из currentColor (accent-text-on) */
+}
+
+@media (min-width: 768px) {
+  .tab-bar__inner {
+    max-width: 520px;
+  }
+}

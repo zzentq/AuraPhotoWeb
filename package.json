@@ -1,0 +1,27 @@
+{
+  "name": "auraphoto-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.59.0",
+    "@twa-dev/sdk": "^8.0.2",
+    "axios": "^1.7.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "gh-pages": "^6.3.0",
+    "vite": "^5.4.10"
+  },
+  "homepage": "https://zzentq.github.io/AuraPhotoWeb/"
+}

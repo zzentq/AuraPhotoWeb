@@ -1,0 +1,32 @@
+.splash {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--safe-top) + 24px) 24px calc(var(--safe-bottom) + 24px);
+  gap: 28px;
+  text-align: center;
+}
+
+.splash__logo {
+  color: var(--accent);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.splash__message {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.splash__message--error {
+  color: var(--danger);
+}
+
+.splash__message .btn {
+  margin-top: 8px;
+}

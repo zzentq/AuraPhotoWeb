@@ -1,0 +1,110 @@
+.profile-page {
+  padding-top: 24px;
+  align-items: center;
+}
+
+.profile-page__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 214, 157, 0.25),
+    transparent 70%
+  );
+  padding: 8px;
+  box-shadow: 0 0 40px -10px var(--accent-glow);
+}
+
+.profile-page__avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-text-on);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 800;
+  border: 2px solid var(--accent-strong);
+}
+
+.profile-page__name {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent);
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+.profile-card {
+  width: 100%;
+  background: rgba(30, 18, 6, 0.5);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-card__title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.profile-card__stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-card__stats li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.profile-card__stats strong {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.profile-card__stat-mini {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+}
+
+.profile-card__hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.profile-page__logout {
+  margin-top: 8px;
+  padding: 8px 16px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  transition: color 0.15s ease;
+}
+
+.profile-page__logout:hover {
+  color: var(--danger);
+}

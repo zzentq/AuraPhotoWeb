@@ -1,0 +1,33 @@
+.authed-image__skeleton {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  background: linear-gradient(
+    120deg,
+    var(--surface) 30%,
+    var(--surface-elevated) 50%,
+    var(--surface) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+.authed-image__error {
+  width: 100%;
+  padding: 24px;
+  text-align: center;
+  color: var(--danger);
+  font-size: 13px;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}

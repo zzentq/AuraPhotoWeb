@@ -1,0 +1,17 @@
+/**
+ * CSS для иконок-масок. Цвет задаётся через background-color: currentColor,
+ * то есть родитель управляет цветом через color: ... .
+ */
+
+.mask-icon {
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}

@@ -1,0 +1,343 @@
+:root {
+  /* Палитра: тёмно-коричневый фон с золотисто-бежевыми акцентами */
+  --bg-top: #130a03;
+  --bg-bottom: #2a1a08;
+
+  --surface: #1e1206;
+  --surface-elevated: #261708;
+  --surface-border: rgba(255, 208, 150, 0.18);
+  --surface-border-strong: rgba(255, 208, 150, 0.4);
+
+  --accent: #ffd69d;
+  --accent-strong: #ffe0b0;
+  --accent-text-on: #2b1a03;
+  --accent-glow: rgba(255, 214, 157, 0.35);
+
+  --text-primary: #ffd69d;
+  --text-secondary: #c8a77c;
+  --text-muted: #8c6b48;
+  --text-placeholder: #6b503a;
+
+  --danger: #e07a5f;
+  --success: #a4c48a;
+
+  --radius-xs: 8px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --shadow-accent: 0 8px 32px -8px var(--accent-glow);
+  --shadow-card: 0 4px 24px -8px rgba(0, 0, 0, 0.5);
+
+  --font-sans: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+
+  --tab-bar-height: 72px;
+
+  /* Safe area insets: сначала пробуем значения от Telegram SDK
+     (ставятся через JS в documentElement.style), потом env() как fallback,
+     потом 0. */
+  --tg-safe-top: env(safe-area-inset-top, 0px);
+  --tg-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --tg-safe-left: env(safe-area-inset-left, 0px);
+  --tg-safe-right: env(safe-area-inset-right, 0px);
+
+  /* Минимальные визуальные отступы, которые хочется иметь всегда — даже если
+     Telegram не даёт ни одного пикселя safe-area (старые клиенты, дебаг). */
+  --safe-top: max(var(--tg-safe-top), 12px);
+  --safe-bottom: max(var(--tg-safe-bottom), 12px);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: radial-gradient(
+      ellipse at top,
+      var(--bg-top) 0%,
+      var(--bg-bottom) 100%
+    )
+    fixed;
+  min-height: 100vh;
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 600;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 700;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* --- Основной шелл приложения --- */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--safe-top);
+  padding-bottom: calc(var(--tab-bar-height) + var(--safe-bottom) + 16px);
+}
+
+.app-shell--no-tabs {
+  padding-bottom: calc(var(--safe-bottom) + 16px);
+}
+
+/* Страница с фиксированной футер-кнопкой внизу */
+.app-shell--floating-button {
+  padding-bottom: calc(var(--safe-bottom) + 16px + 52px + 16px);
+}
+
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent);
+  text-align: center;
+  margin: 4px 0 0;
+  letter-spacing: -0.01em;
+}
+
+/* --- Бейдж токенов в шапке --- */
+.token-badge {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--surface-border-strong);
+  background: rgba(30, 18, 6, 0.6);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: var(--shadow-accent);
+  min-height: 44px;
+}
+
+.token-badge__icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+}
+
+/* --- Кнопки --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-radius: var(--radius-pill);
+  font-weight: 800;
+  font-size: 17px;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+  min-height: 56px;
+  line-height: 1;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--accent-text-on);
+  box-shadow: 0 8px 24px -8px var(--accent-glow);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--surface-border-strong);
+}
+
+.btn--icon {
+  width: 56px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* --- Поля ввода --- */
+.input,
+.textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--accent);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--text-placeholder);
+  font-weight: 600;
+}
+
+/* --- Пилюля-селект --- */
+.pill-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill-field__label {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.pill {
+  background: var(--accent);
+  color: var(--accent-text-on);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 15px;
+  min-width: 90px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pill__caret {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent-text-on);
+}
+
+/* --- Центрированные состояния --- */
+.centered-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.centered-state__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Desktop tweaks */
+@media (min-width: 768px) {
+  .page {
+    max-width: 520px;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--surface-border);
+    border-radius: 4px;
+  }
+}
+
+/* --- Анимации --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 20px var(--accent-glow)); }
+  50%      { filter: drop-shadow(0 0 40px var(--accent-glow)); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fade-in 0.25s ease;
+}
+
+/* Для смены nav <-> generate button */
+@keyframes swap-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)  scale(1); }
+}
+
+@keyframes swap-out {
+  from { opacity: 1; transform: translateY(0)  scale(1); }
+  to   { opacity: 0; transform: translateY(8px) scale(0.95); }
+}

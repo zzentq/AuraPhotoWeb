@@ -1,0 +1,58 @@
+/**
+ * Фиксированная нижняя панель. Высота слоя одинаковая для TabBar и кнопки,
+ * поэтому при переключении ничего не "прыгает".
+ *
+ * Отступ снизу учитывает Telegram safe area + минимальные 12px (см. global.css).
+ */
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  padding: 0 12px var(--safe-bottom);
+  pointer-events: none;
+}
+
+.bottom-bar__layer {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 12px;
+  /* Чтобы TabBar и Submit имели одинаковую визуальную высоту,
+     задаём минимальную высоту слоя ~64px (= высота полоски TabBar). */
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+}
+
+@media (min-width: 768px) {
+  .bottom-bar__layer {
+    max-width: 520px;
+  }
+}
+
+/* Swap-анимация: opacity + scale */
+.bottom-bar__layer--in {
+  animation: swap-in 0.22s ease-out both;
+}
+
+.bottom-bar__layer--out {
+  animation: swap-out 0.22s ease-in both;
+}
+
+/* --- Submit-кнопка как замена TabBar --- */
+.bottom-bar__submit {
+  width: 100%;
+  /* Совпадаем по высоте с TabBar (64px) для безшовного перехода */
+  min-height: 64px;
+  font-size: 18px;
+}
+
+.bottom-bar__submit-star {
+  display: inline-flex;
+  align-items: center;
+  /* В кнопке у нас тёмный текст, иконку красим в тот же цвет */
+  color: var(--accent-text-on);
+}
